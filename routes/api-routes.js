@@ -23,9 +23,20 @@ module.exports = (app) => {
     });
     //create new workout
     app.post('/api/workouts', (req, res) => {
+        console.log("Is this working?");
         db.Workout.create({}).then(newWorkout => {
             res.json(newWorkout);
         });
     });
+
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.aggregate([
+            {
+                $addFields: {
+                    totalDuration: { $sum: exercises.duration },
+                },
+            }
+        ])
+    })
 
 }

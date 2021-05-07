@@ -17,7 +17,7 @@ app.use(express.json());
 //use static files
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/fittracker", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/", {useNewUrlParser: true});
 
 
 //use routes
